@@ -1,9 +1,9 @@
-package = 'PegasusJs'
-version = '0.9.0-1'
+package = 'pegasus_js'
+version = '0.0-0'
 
 source = {
   url = 'git://github.com/o-jasper/PegasusJs.git',
-  tag = 'ZEROWWW'
+  tag = '0.0-0first'
 }
 
 description = {
