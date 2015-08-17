@@ -1,8 +1,8 @@
-package = 'pegasusJs'
+package = 'PegasusJs'
 version = '0.9.0-1'
 
 source = {
-  url = 'git://github.com/o-jasper/pegasusJs.git',
+  url = 'git://github.com/o-jasper/PegasusJs.git',
   tag = 'ZEROWWW'
 }
 
@@ -22,8 +22,8 @@ dependencies = {  -- TODO not yet bothering with versions..
 build = {
   type = "builtin",
   modules = {
-    ['pegasusJs.init']     = "src/pegasusJs/init.lua",
-    ['pegasusJs.callback_gen_js'] = "src/pegasusJs/callback_gen_js.lua",
-    ['pegasusJs.gen_js'] = "src/pegasusJs/gen_js.lua",    
+    ['PegasusJs.init']     = "src/PegasusJs/init.lua",
+    ['PegasusJs.callback_gen_js'] = "src/PegasusJs/callback_gen_js.lua",
+    ['PegasusJs.gen_js'] = "src/PegasusJs/gen_js.lua",    
   }
 }

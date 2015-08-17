@@ -38,6 +38,15 @@ If callbacks are enabled, then `callback_<name>(args, callback_function)` is
 `callback_gen_js` the callback version. `init.lua` is the main file
 implementing `:respond` and otherwise putting things together.
 
+### Install:
+Manually:
+
+* Make a directory, add `src/` here to `package.path`, i.e in `~/.init.lua`,
+* Or have a directory in `package.path`, like `~/.lualibs/` already, and
+  from there symlink: `ln -s $to_project/src/PegasusJs`
+
+TODO via the rock.
+
 ## TODO
 
 * Make callbacks/regular optional? i.e.
@@ -46,3 +55,10 @@ implementing `:respond` and otherwise putting things together.
 * Lack of tests, just the example right now.
 
 * Lack of lua rock.
+
+* It does not work on pegasus.lua `develop` branch, likely will need work
+  as that moves forward.
+  
+  Including potential "plugins"
+
+* Perhaps other servers can use the same concept.
