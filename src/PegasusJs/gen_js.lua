@@ -1,5 +1,3 @@
--- Placed in the public domain.
-
 -- Generating javascript for the bindings.
 -- callback_gen_js is the asynchronous version.
 

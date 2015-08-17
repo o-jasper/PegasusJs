@@ -1,5 +1,3 @@
--- Placed in the public domain.
-
 -- Callback version of `gen_js`
 
 local Public = {}

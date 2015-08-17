@@ -1,5 +1,3 @@
--- Placed in the public domain.
-
 local PegasusJs = {}
 
 PegasusJs.__index = PegasusJs
