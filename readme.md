@@ -42,13 +42,17 @@ If callbacks are enabled, then `callback_<name>(args, callback_function)` is
 implementing `:respond` and otherwise putting things together.
 
 ### Install:
-Via the rockspec: It'll be called 'pegasusjs' afaict.
+Via the rockspec: It'd be called 'pegasusjs' afaict. However, i was too
+lazy to log in.
 
 Manually:
 
-* Make a directory, add `src/` here to `package.path`, i.e in `~/.init.lua`,
-* Or have a directory in `package.path`, like `~/.lualibs/` already, and
-  from there symlink: `ln -s $to_project/src/PegasusJs`
+1. Make a directory, add `src/` here to `package.path`, i.e in `~/.init.lua`,
+2. Or have a directory in `package.path`, like `~/.lualibs/` already, and
+   from there symlink: `ln -s $to_project/src/PegasusJs`
+
+Similar for windows, just use (1) and find the `~/.init.lua` file.
+Nevermind, just stop using windows.
 
 ## TODO
 
@@ -57,11 +61,10 @@ Manually:
 
 * Lack of tests, just the example right now.
 
-* Lack of lua rock.
-
 * It does not work on pegasus.lua `develop` branch, likely will need work
   as that moves forward.
   
-  Including potential "plugins"
+  Including potential "plugins".
 
 * Perhaps other servers can use the same concept.
+  [same concept idea suggestion to Tox](https://github.com/irungentoo/toxcore/issues/1403).
