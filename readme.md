@@ -39,13 +39,13 @@ If callbacks are enabled, then `callback_<name>(args, callback_function)` is
 implementing `:respond` and otherwise putting things together.
 
 ### Install:
+Via the rockspec: It'll be called 'pegasusjs' afaict.
+
 Manually:
 
 * Make a directory, add `src/` here to `package.path`, i.e in `~/.init.lua`,
 * Or have a directory in `package.path`, like `~/.lualibs/` already, and
   from there symlink: `ln -s $to_project/src/PegasusJs`
-
-TODO via the rock.
 
 ## TODO
 
