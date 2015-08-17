@@ -1,4 +1,7 @@
-# Javascript bindings,
+PegasusJs allows you to easily effectively expose lua functions server
+side to javascript on the client side',
+
+# Jow to use
 You load this completely separately to Pegasus, and feed the
 `request` and `response` `server:start` to the `:respond`
 method of this thing. If it returns `nil`/`false`, then you can
