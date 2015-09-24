@@ -8,8 +8,9 @@ PegasusJs.__index = PegasusJs
 --                    Defaults to a new empty.
 -- has_callbacks    Whether callbacks are provided for asynchronous use on
 --                    the javascript side.
--- script_path      Path used, default `from_path .. "/index.js"` _must_ be under `from_path`
---                    user has to <script src=".."> this.
+-- script_name      Path of script itself. default index,js
+PegasusJs.script_name = "index.js"
+
 function PegasusJs.new(init_tab)
    init_tab.from_path = init_tab[1] or init_tab.from_path or "PegasusJs"
    init_tab[1] = nil
@@ -45,20 +46,25 @@ local json = require "json"
 
 function PegasusJs:respond(request, response)
    local n = #(self.from_path)
-   assert(request.path)
-   if string.sub(request.path, 1, n) == self.from_path then
-      local _, j = string.find(request.path, "/", n + 2, true)
-      local name = string.sub(request.path, n + 2, j and j - 1)
-      local fun = self.funs[name]
+   local req_path = request:path()
+   assert(req_path)
+   if string.sub(req_path, 1, n) == self.from_path then
+      local name = string.match(req_path, "([^/]+)/?$")
+      local fun = self.funs[name or "<noname>"]
       if fun then
-         assert(request.post.d, "Didnt get response data?")
-         local ret = fun(unpack(json.decode(request.post.d)))
-         assert(type(ret) ~= "function", "Returned not-json-able, " .. request.path)
+         local post = request:post()
+         if not post.d then
+            print(post)
+            for k,v in pairs(post) do print(k,v) end
+            assert(post.d, "Didnt get response data?")
+         end
+         local ret = fun(unpack(json.decode(post.d)))
+         assert(type(ret) ~= "function", "Returned not-json-able, " .. req_path)
          local result = json.encode(ret)
          response:addHeader('Cache-Control', 'no-cache')  -- Dont cache, want it fresh.
          response:addHeader('Content-Type', 'text/json'):write(result)
          return true
-      elseif request.path == self.script_path then
+      elseif name == self.script_name then
          response:addHeader('Cache-Control', 'no-cache') -- Suppose a end-data might be nicer.
          response:addHeader('Content-Type', 'text/javascript'):write(self:_script())
          return true
