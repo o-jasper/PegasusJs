@@ -22,22 +22,25 @@ js:add({
 
 server:start(function (req, rep)
       local html = [[
-<script type="text/javascript" src="/comms/index.js"></script>
 <script>
 function do_it() {
     var x = Math.random();
     var got = do_random(x);
-    for(k in got){ document.getElementById(k).innerText = got[k]; }
-    document.getElementById("js_calced").innerText = (x + got["r_server"]);
+    for(k in got){
+        document.getElementById(k).textContent = got[k];
+    }
+    document.getElementById("js_calced").textContent = (x + got["r_server"]);
 }
 function callback_do_it() {
     var x = Math.random();
     callback_do_random([x], function(got) {
-      for(k in got){ document.getElementById(k).innerText = got[k]; }
-      document.getElementById("js_calced").innerText = (x + got["r_server"]);
+      for(k in got){ document.getElementById(k).textContent = got[k]; }
+      document.getElementById("js_calced").textContent = (x + got["r_server"]);
     })
 }
 </script>
+<script type="text/javascript" src="/comms/index.js"></script>
+
 <button onclick="do_it()">Do it</button>
 <button onclick="callback_do_it()">Callback do it</button>
 <span id="cnt">Count not set</span>
@@ -48,10 +51,6 @@ function callback_do_it() {
 </tr>
 <tr><td>javascript:<td>= <span id="js_calced"></span></td></tr>
 </table>
-<script>
-// In programs, I avoid doing things in a special way in the first time.
-do_it();
-</script>
 ]]
       if not js:respond(req, rep) then
          rep:addHeader('Content-Type', 'text/html'):write(html)
