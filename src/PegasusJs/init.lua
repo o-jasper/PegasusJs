@@ -11,6 +11,8 @@ PegasusJs.__index = PegasusJs
 -- script_name      Path of script itself. default index,js
 PegasusJs.script_name = "index.js"
 
+PegasusJs.has_callbacks = true
+
 function PegasusJs.new(init_tab)
    init_tab.from_path = init_tab[1] or init_tab.from_path or "PegasusJs"
    init_tab[1] = nil
@@ -50,7 +52,7 @@ function PegasusJs:respond(request, response)
    assert(req_path)
    if string.sub(req_path, 1, n) == self.from_path then
       local name = string.match(req_path, "([^/]+)/?$")
-      local fun = self.funs[name or "<noname>"]
+      local fun = self.funs[name or "<noname>"]  -- The function.
       if fun then
          local post = request:post()
          if not post.d then
