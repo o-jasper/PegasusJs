@@ -56,7 +56,9 @@ Nevermind, just stop using windows.
 
 ## TODO
 
-* Make other backends than pegasus work?
+* Make other backends than pegasus work? There is a "luvit harness" which i made
+  for [page_html](https://github.com/o-jasper/page_html) but might be applicable
+  here too.
 
 * Lack of tests, just the example right now. Seems fine.
   (not lower standards than dependency)
@@ -68,3 +70,20 @@ Nevermind, just stop using windows.
 
 * Perhaps other servers can use the same concept.
   [same concept idea suggestion to Tox](https://github.com/irungentoo/toxcore/issues/1403).
+
+## Lua Ring
+
+* [lua_Searcher](https://github.com/o-jasper/lua_Searcher) sql formulator including
+  search term, and Sqlite bindings.
+
+* [page_html](https://github.com/o-jasper/page_html) provide some methods on an object,
+  get a html page.(with js)
+
+* [storebin](https://github.com/o-jasper/storebin) converts trees to binary, same
+  interfaces as json package.(plus `file_encode`, `file_decode`)
+  
+* [PegasusJs](https://github.com/o-jasper/PegasusJs), easily RPCs javascript to
+  lua. In pegasus.
+
+* [tox_comms](https://github.com/o-jasper/tox_comms/), lua bindings to Tox and
+  bare bot.
