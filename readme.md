@@ -2,8 +2,8 @@ PegasusJs allows you to easily effectively expose lua functions server
 side to javascript on the client side',
 
 # How to use
-You load this completely separately to Pegasus, and feed the
-`request` and `response` `server:start` to the `:respond`
+You load this completely separately to [Pegasus](http://evandrolg.github.io/pegasus.lua/),
+and feed the `request` and `response` `server:start` to the `:respond`
 method of this thing. If it returns `nil`/`false`, then you can
 do your own thing.
 
@@ -56,10 +56,10 @@ Nevermind, just stop using windows.
 
 ## TODO
 
-* Make callbacks/regular optional? i.e.
-  `{function, what}` with `what` `"callback"` or `"function"` or `"both"`
+* Make other backends than pegasus work?
 
-* Lack of tests, just the example right now.
+* Lack of tests, just the example right now. Seems fine.
+  (not lower standards than dependency)
 
 * It does not work on pegasus.lua `develop` branch, likely will need work
   as that moves forward.
