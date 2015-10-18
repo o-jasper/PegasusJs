@@ -33,7 +33,7 @@ function correctly, and "incorrect" or perhaps some description otherwise.
 If `name` has a function, then `name(...)` is the same function in javascript.
 
 If callbacks are enabled, then `callback_<name>(args, callback_function)` is
-*also* provided.
+*also* provided. Where `args` is a list of the arguments.
 
 ### Files:
 
