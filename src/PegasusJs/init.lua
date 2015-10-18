@@ -60,7 +60,9 @@ function PegasusJs:respond(request, response)
             for k,v in pairs(post) do print(k,v) end
             assert(post.d, "Didnt get response data?")
          end
-         local ret = fun(unpack(json.decode(post.d)))
+         local decoded = json.decode(post.d)
+         if type(decoded) ~= "table" then return "Wrong call: " .. name end
+         local ret = fun(unpack(decoded))
          assert(type(ret) ~= "function", "Returned not-json-able, " .. req_path)
          local result = json.encode(ret)
          response:addHeader('Cache-Control', 'no-cache')  -- Dont cache, want it fresh.
