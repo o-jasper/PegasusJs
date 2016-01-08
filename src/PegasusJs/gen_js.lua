@@ -13,7 +13,7 @@ function httpGet(url, data) {
     req.setRequestHeader("Content-length", data.length + 2);
     req.setRequestHeader("Cache-Control", "no-cache");
     
-    req.send("d=" + data);
+    req.send(data);
 
     return req.responseText;
 }

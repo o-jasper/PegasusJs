@@ -49,18 +49,16 @@ local json = require "json"
 function PegasusJs:respond(request, response)
    local n = #(self.from_path)
    local req_path = request:path()
-   assert(req_path)
-   if string.sub(req_path, 1, n) == self.from_path then
+   if req_path and string.sub(req_path, 1, n) == self.from_path then
       local name = string.match(req_path, "([^/]+)/?$")
       local fun = self.funs[name or "<noname>"]  -- The function.
       if fun then
-         local post = request:post()
-         if not post.d then
-            print(post)
-            for k,v in pairs(post) do print(k,v) end
-            assert(post.d, "Didnt get response data?")
+         local body = request:receiveBody()
+         local decoded = nil
+         pcall( function() decoded = json.decode(body) end )
+         if decoded == nil then
+            return "decode_failed: " .. body
          end
-         local decoded = json.decode(post.d)
          if type(decoded) ~= "table" then return "Wrong call: " .. name end
          local ret = fun(unpack(decoded))
          assert(type(ret) ~= "function", "Returned not-json-able, " .. req_path)
