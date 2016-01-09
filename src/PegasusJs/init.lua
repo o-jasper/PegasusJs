@@ -54,8 +54,9 @@ function PegasusJs:respond(request, response)
       local fun = self.funs[name or "<noname>"]  -- The function.
       if fun then
          local body = request:receiveBody()
+
          local decoded = nil
-         pcall( function() decoded = json.decode(body) end )
+         pcall( function() decoded = json.decode(body).d end )
          if decoded == nil then
             return "decode_failed: " .. body
          end

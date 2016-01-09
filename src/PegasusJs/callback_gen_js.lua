@@ -32,7 +32,7 @@ function callback_%s(arg_list, callback){
     if( callback ){
        the_callback = function(responseText) { callback(JSON.parse(responseText)); };
     }
-    httpGet_callback("%s/%s/", JSON.stringify(arg_list), the_callback);
+    httpGet_callback("%s/%s/", JSON.stringify({d:arg_list}), the_callback);
 }
 ]],
       name, url, name)

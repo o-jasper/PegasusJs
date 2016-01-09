@@ -19,7 +19,7 @@ function httpGet(url, data) {
 }
 
 function jsonCall(url, args) {
-    return JSON.parse(httpGet(url, JSON.stringify(args)))
+    return JSON.parse(httpGet(url, JSON.stringify({d:args})))
 }
 ]]
 
