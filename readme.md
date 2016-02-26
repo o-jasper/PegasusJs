@@ -14,7 +14,7 @@ Depends on `json` package, there is an example in `examples/PegasusJs.lua`.
 `local PegasusJs = require "PegasusJs"` to get the lib, assuming it is
 available to `package.path`.
 
-`local pjs = PegasusJs.new(from_path, fun_table, has_callbacks)`
+`local pjs = PegasusJs.new{from_path, fun_table, has_callbacks}`
 makes a new one, `from_path` the path of which all sub-paths are used.
 `fun_table` is an initial set of functions. `{}` if `nil`.
 `has_callbacks` whether it has callbacks.
@@ -70,6 +70,8 @@ Nevermind, just stop using windows.
 
 * Perhaps other servers can use the same concept.
   [same concept idea suggestion to Tox](https://github.com/irungentoo/toxcore/issues/1403).
+
+* Presumably a webRTC version can be made.
 
 ## Lua Ring
 

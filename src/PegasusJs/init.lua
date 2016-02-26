@@ -36,9 +36,11 @@ function PegasusJs:_script()
       ret = ret .. callback_gen_js.depend_js
    end
    for name, _ in pairs(self.funs) do
-      ret = ret .. gen_js.bind_js(self.from_path,  name)
-      if self.has_callbacks then
-         ret = ret .. callback_gen_js.bind_js(self.from_path,  name)
+      if string.find(name, "^[%w_]+$") then  -- Everything with js-accepted names.
+         ret = ret .. gen_js.bind_js(self.from_path,  name)
+         if self.has_callbacks then
+            ret = ret .. callback_gen_js.bind_js(self.from_path,  name)
+         end
       end
    end
    return ret
@@ -53,6 +55,7 @@ function PegasusJs:respond(request, response)
       local name = string.match(req_path, "([^/]+)/?$")
       local fun = self.funs[name or "<noname>"]  -- The function.
       if fun then
+         request:headers()  -- Currently at least, pegasus needs asking this first.
          local body = request:receiveBody()
 
          local decoded = nil
@@ -61,9 +64,11 @@ function PegasusJs:respond(request, response)
             return "decode_failed: " .. body
          end
          if type(decoded) ~= "table" then return "Wrong call: " .. name end
-         local ret = fun(unpack(decoded))
+         local ret = fun(decoded[1], decoded[2], decoded[3], decoded[4], decoded[5],
+                         decoded[6], decoded[7], decoded[8], decoded[9], decoded[10])
          assert(type(ret) ~= "function", "Returned not-json-able, " .. req_path)
          local result = json.encode(ret)
+
          response:addHeader('Cache-Control', 'no-cache')  -- Dont cache, want it fresh.
          response:addHeader('Content-Type', 'text/json'):write(result)
          return true
