@@ -6,7 +6,7 @@ package.path = "./src/?.lua;./src/?/init.lua;"..package.path
 local Pegasus = require 'pegasus'
 local PegasusJs = require 'PegasusJs'
 
-local server = Pegasus:new()
+local server = Pegasus:new{ port = tonumber(arg[1]) or nil }
 
 local js = PegasusJs.new{"/comms", has_callbacks=true}
 assert(js.from_path)
