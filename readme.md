@@ -60,18 +60,12 @@ Nevermind, just stop using windows.
   for [page_html](https://github.com/o-jasper/page_html) but might be applicable
   here too.
 
-* Lack of tests, just the example right now. Seems fine.
-  (not lower standards than dependency)
-
-* It does not work on pegasus.lua `develop` branch, likely will need work
-  as that moves forward.
-  
-  Including potential "plugins".
+* Lack of tests. However i have used it a fair amount.
 
 * Perhaps other servers can use the same concept.
   [same concept idea suggestion to Tox](https://github.com/irungentoo/toxcore/issues/1403).
 
-* Presumably a webRTC version can be made.
+* Presumably a webRTC version can be made?
 
 ## Lua Ring
 
